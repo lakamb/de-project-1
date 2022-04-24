@@ -94,7 +94,7 @@ GROUP BY 1;
 
 
 
--- production.orderstatuses - Статус заказа
+-- production.orderstatuses - Справочник статусов заказов
 SELECT *
 FROM production.orderstatuses;
 
