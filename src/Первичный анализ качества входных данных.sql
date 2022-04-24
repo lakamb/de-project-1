@@ -31,7 +31,7 @@ FROM production.products;
 
 -- 0 0
 SELECT sum(CASE WHEN name IS NULL THEN 1 ELSE 0 END), 
-	   sum(CASE WHEN price IS NULL THEN 1 ELSE 0 END)
+       sum(CASE WHEN price IS NULL THEN 1 ELSE 0 END)
 FROM production.products;
 
 
@@ -46,8 +46,8 @@ FROM production.orderitems;
 
 -- 0 0 0
 SELECT sum(CASE WHEN price IS NULL THEN 1 ELSE 0 END), 
-	   sum(CASE WHEN discount IS NULL THEN 1 ELSE 0 END),
-	   sum(CASE WHEN quantity IS NULL THEN 1 ELSE 0 END)
+       sum(CASE WHEN discount IS NULL THEN 1 ELSE 0 END),
+       sum(CASE WHEN quantity IS NULL THEN 1 ELSE 0 END)
 FROM production.orderitems;
 
 
@@ -71,10 +71,10 @@ WHERE bonus_payment != 0;
 
 -- 0 0 0 0 0
 SELECT sum(CASE WHEN bonus_payment IS NULL THEN 1 ELSE 0 END), 
-	   sum(CASE WHEN payment IS NULL THEN 1 ELSE 0 END), 
-	   sum(CASE WHEN cost IS NULL THEN 1 ELSE 0 END), 
-	   sum(CASE WHEN bonus_grant IS NULL THEN 1 ELSE 0 END), 
-	   sum(CASE WHEN status IS NULL THEN 1 ELSE 0 END)
+       sum(CASE WHEN payment IS NULL THEN 1 ELSE 0 END), 
+       sum(CASE WHEN cost IS NULL THEN 1 ELSE 0 END), 
+       sum(CASE WHEN bonus_grant IS NULL THEN 1 ELSE 0 END), 
+       sum(CASE WHEN status IS NULL THEN 1 ELSE 0 END)
 FROM production.orders;
 
 
