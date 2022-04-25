@@ -5,9 +5,13 @@ FROM production.orders o
 LEFT JOIN (
 	SELECT order_id, status_id
 	FROM (
-		SELECT order_id, status_id, dttm, max(dttm) over(PARTITION BY order_id) max_dttm
+		SELECT order_id, status_id, dttm, 
+			--max(dttm) over(PARTITION BY order_id) max_dttm
+			rank() over(PARTITION BY order_id ORDER BY dttm DESC) rank_dttm 
 		FROM production.OrderStatusLog) t
-		WHERE dttm = max_dttm) stid -- status_id/Стыд за такой несуразный запрос
+		WHERE 1=1
+		  --AND dttm = max_dttm -- только мне не совсем понятно, в чем принципиальная разница
+		  AND rank_dttm = 1) stid -- status_id/Стыд за такой несуразный запрос
 		ON stid.order_id = o.order_id);
 		
 SELECT * FROM analysis.orders
